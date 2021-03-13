@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Parameter files - Mirmex</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Parameter files";
+    var mkdocs_page_input_path = "parfiles.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Mirmex</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Home</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Reference</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../source/">Source files</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Parameter files</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pre-processing">Pre-processing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#correlation-and-stacking">Correlation and stacking</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Mirmex</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Reference &raquo;</li>
+        
+      
+    
+    <li>Parameter files</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="parameter-files">Parameter files</h1>
+<h2 id="pre-processing">Pre-processing</h2>
+<p>Parameter file <code>input_correction.xml</code></p>
+<pre><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;processing_parameters&gt;
+
+    &lt;!--preprocessing run: Name, description. Must be included.--&gt;
+    &lt;prepname&gt;sts-1_2014&lt;/prepname&gt;
+    &lt;comment&gt;Preprocessing with new cpp tool&lt;/comment&gt;
+    &lt;!--print output--&gt;
+    &lt;verbose&gt;1&lt;/verbose&gt;
+    &lt;!--save output to file if set to 1. If set to 0, print to screen.--&gt;
+    &lt;outfile&gt;1&lt;/outfile&gt;
+    &lt;!--plot and save time series and psd at various processing stages--&gt;
+    &lt;check&gt;0&lt;/check&gt;
+    &lt;!--update mode, will search for already existing files in the out directories and only process the others.--&gt;
+    &lt;update&gt;0&lt;/update&gt;
+
+    &lt;!--*************************************************************************************************--&gt;
+    &lt;!--input and output directories--&gt;
+    &lt;!--*************************************************************************************************--&gt;
+
+    &lt;input&gt;
+        &lt;!--input directory for data to be processed--&gt;
+        &lt;indirs&gt;/scratch/snx3000/alexey/ants/phase01/DATA/raw/&lt;/indirs&gt;
+        &lt;!--time window covered roughly. (YYYY)--&gt;
+        &lt;startyr&gt;2013&lt;/startyr&gt;
+        &lt;endyr&gt;2014&lt;/endyr&gt;
+    &lt;/input&gt;
+
+    &lt;!--*************************************************************************************************--&gt;
+    &lt;!--quality checks--&gt;
+    &lt;!--*************************************************************************************************--&gt;
+
+    &lt;quality&gt;
+        &lt;min_length_in_sec&gt;3600&lt;/min_length_in_sec&gt;
+        &lt;maxgaplen&gt;60&lt;/maxgaplen&gt;
+    &lt;/quality&gt;
+
+    &lt;!--*************************************************************************************************--&gt;
+    &lt;!--preprocessing--&gt;
+    &lt;!--*************************************************************************************************--&gt;
+
+
+    &lt;!--preprocessing on individual seismograms--&gt;
+    &lt;!--The order corresponds to the actual order of execution--&gt;
+    &lt;processing&gt;
+        &lt;!--split traces into shorter segments--&gt;
+        &lt;split&gt;
+            &lt;doit&gt;1&lt;/doit&gt;
+            &lt;length_in_sec&gt;524288&lt;/length_in_sec&gt;
+        &lt;/split&gt;
+        &lt;!--trim to nearest second--&gt;
+        &lt;trim&gt;1&lt;/trim&gt;
+        &lt;!--remove linear trend--&gt;
+        &lt;detrend&gt;1&lt;/detrend&gt;
+        &lt;!--remove mean--&gt;
+        &lt;demean&gt;1&lt;/demean&gt;
+        &lt;!--taper edges of seismogram for better filtering--&gt;
+        &lt;taper&gt;
+            &lt;doit&gt;1&lt;/doit&gt;
+            &lt;taper_width&gt;0.05&lt;/taper_width&gt;
+        &lt;/taper&gt;
+
+        &lt;!--downsampling--&gt;
+        &lt;!-- The original sampling rates are needed, because traces with a wrong sampling rate (like 1.0000004, I have seen that) need to be sorted out. Separate different sampling rates by whitespaces.--&gt;
+        &lt;!-- If the new sampling rate is different from the old one, data will be downsampled.--&gt;
+        &lt;!--A lowpass filter is hardcoded into downsampling. It has a corner frequency of one quarter of the new sampling frequency.--&gt;
+        &lt;!--When a large amont of downsampling is performed, do it in two steps! e. g. instead of by factor 20 decimate by 5 then 4.--&gt;
+        &lt;!--put in intermediate steps separated by spaces, e. g. 4.0 1.0--&gt;
+        &lt;!--IMPORTANT: Since correlation windows are cut by start and end time in seconds, don't decimate below 1 Hz in the preprocessing stage, or you will run into difficulties with the window selection for correlation.--&gt;
+        &lt;decimation&gt;
+            &lt;Fs_old&gt;1.0&lt;/Fs_old&gt;
+            &lt;Fs_new&gt;1.0&lt;/Fs_new&gt;
+        &lt;/decimation&gt;
+
+        &lt;!--remove instrument response--&gt;
+        &lt;instrument_response&gt;
+            &lt;doit&gt;1&lt;/doit&gt;
+            &lt;unit&gt;VEL&lt;/unit&gt;
+            &lt;respdir&gt;/scratch/snx3000/alexey/ants/phase01/DATA/resp/&lt;/respdir&gt;
+            &lt;freqs&gt;0.001 0.002 0.32 0.4&lt;/freqs&gt;
+            &lt;waterlevel&gt;0.0&lt;/waterlevel&gt;
+        &lt;/instrument_response&gt;
+    &lt;/processing&gt; 
+
+&lt;/processing_parameters&gt;
+</code></pre>
+
+<h2 id="correlation-and-stacking">Correlation and stacking</h2>
+<p>Parameter file <code>input_parstack.xml</code>.</p>
+<pre><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;stacking_parameters&gt;
+
+
+    &lt;!-- NEW input: this environment variable is the one that contains the MPI rank. This is so that even on local systems, I do not have to use mpi4pi anymore, and the problem of knowing the rank is solved for both local and daint --&gt;
+    &lt;rankvariable&gt;ALPS_APP_PE&lt;/rankvariable&gt;
+
+    &lt;!--print screen output--&gt;
+    &lt;verbose&gt;1&lt;/verbose&gt;
+    &lt;!--select a test run. This saves an intermediate result at every time window (attention, needs ***LOTS*** (and lots and lots) of storage space)--&gt;
+    &lt;check&gt;1&lt;/check&gt;
+    &lt;!--provide a name that will appear as 'stamp' on all correlations calculated in this run--&gt;
+    &lt;corrname&gt;test_cpp&lt;/corrname&gt;
+    &lt;!--Describe briefly--&gt;
+    &lt;comment&gt;Run gpu correlation on Daint&lt;/comment&gt;
+    &lt;!--Updating on a previous run? --&gt;
+    &lt;update&gt;1&lt;/update&gt;
+
+&lt;!--**************************************************************************************************--&gt;
+    &lt;!--Specifics for data distribution to cores--&gt;
+&lt;!--**************************************************************************************************--&gt;
+    &lt;data&gt;
+        &lt;!--station ID list; containing entries in format net.sta.loc.cha --&gt;
+        &lt;idfile&gt;/scratch/snx3000/alexey/ants/phase01/INPUT/input_stations.txt&lt;/idfile&gt;
+        &lt;!--How many station pairs for each core? Typically the number of files opened by that core is about n+1--&gt;
+        &lt;npairs&gt;4&lt;/npairs&gt;
+        &lt;!-- Specify channel: LH, BH, VH... --&gt;
+        &lt;channel&gt;LH&lt;/channel&gt;
+        &lt;!-- choose between Z and EN. 'All channels' is not implemented yet. 'EN' will provide you with RR, TT, and RT correlation --&gt;
+        &lt;components&gt;Z&lt;/components&gt;
+        &lt;!-- Mix channels?--&gt;
+        &lt;mix_cha&gt;0&lt;/mix_cha&gt;
+    &lt;/data&gt;
+
+ &lt;!--*************************************************************************************************--&gt;
+    &lt;!--selection--&gt;
+ &lt;!--*************************************************************************************************--&gt;  
+
+    &lt;selection&gt;
+        &lt;!--Input directory containing data. Can only handle one input directory at the moment.--&gt;
+        &lt;indir&gt;/scratch/snx3000/alexey/ants/phase01/DATA/processed/sts-1_2014/&lt;/indir&gt;
+        &lt;!--Enter preprocessing run name(s). Put * for any preprocessing--&gt;
+        &lt;prepname&gt;sts-1_2014&lt;/prepname&gt;   
+    &lt;/selection&gt;
+    &lt;!--*************************************************************************************************--&gt;
+    &lt;!--Time--&gt;
+    &lt;!--*************************************************************************************************--&gt;
+    &lt;timethings&gt;
+        &lt;!--Sampling rate.If different from sampling rate, data will be downsampled before correlation. --&gt;
+        &lt;Fs&gt;1.0&lt;/Fs&gt;
+        &lt;!--Start date. Will only process files from this--&gt;
+        &lt;startdate&gt;20140101&lt;/startdate&gt;
+        &lt;!--End date. Will only process files until this. Format yyyymmdd--&gt;
+        &lt;enddate&gt;20150101&lt;/enddate&gt;
+        &lt;!--Length of the time windows to be correlated, in seconds--&gt;
+        &lt;winlen&gt;32768&lt;/winlen&gt;
+        &lt;!--Overlap in SECONDS--&gt;
+        &lt;!--Groos et al. recommend an overlap that is equal to the maximum lag--&gt;
+        &lt;olap&gt;6000&lt;/olap&gt;
+    &lt;/timethings&gt;
+
+
+    &lt;!--*************************************************************************************************--&gt;
+    &lt;!--Correlations--&gt;
+    &lt;!--*************************************************************************************************--&gt;
+
+    &lt;!--apply bandpass before correlating--&gt;
+    &lt;bandpass&gt;
+        &lt;doit&gt;1&lt;/doit&gt;
+        &lt;f_min&gt;0.002&lt;/f_min&gt;
+        &lt;f_max&gt;0.05&lt;/f_max&gt;
+        &lt;corners&gt;3&lt;/corners&gt;
+        &lt;!-- NEW input: Optional taper, useful to avoid filtering problems, ringing --&gt;
+        &lt;taper&gt;
+            &lt;doit&gt;1&lt;/doit&gt;
+            &lt;perc&gt;0.05&lt;/perc&gt;
+        &lt;/taper&gt;
+        &lt;!-- NEW input: A few additional options like whitening, glitch removal, onebit, which I do not consider important at the moment.--&gt;
+    &lt;/bandpass&gt;
+
+    &lt;!--Type of correlations--&gt;
+    &lt;correlations&gt;
+        &lt;!--Autocorrelation yes or no--&gt;
+        &lt;autocorr&gt;0&lt;/autocorr&gt;
+        &lt;!--Type of correlation: 'pcc','pcc','both'--&gt;
+        &lt;corrtype&gt;ccc&lt;/corrtype&gt;
+        &lt;!-- NEW input: Normalize the correlations, or keep only the cross-coherency as given out by np. correlation, i.e. the Inverse Fourier transform of the product of the Fourier transform of one time series with the complex conjugate of the FT of the other --&gt;
+        &lt;normalize&gt;1&lt;/normalize&gt; 
+        &lt;!--Maximum lag in seconds--&gt;
+        &lt;max_lag&gt;12000&lt;/max_lag&gt;
+        &lt;!--For phase cross-correlation: Specify exponent (cf Schimmel et al. 2013)--&gt;
+        &lt;pcc_nu&gt;1&lt;/pcc_nu&gt;
+        &lt;!--For phase weighted stack: Specify type of stack: 0 is time domain, 1 time-scale-domain (using continuous wavelet transform)--&gt;
+        &lt;tfpws&gt;0&lt;/tfpws&gt;
+    &lt;/correlations&gt;  
+
+&lt;/stacking_parameters&gt;
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../source/" class="btn btn-neutral" title="Source files"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../source/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
