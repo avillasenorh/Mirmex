@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Temporary and hidden files
+*.swp
+.DS_Store

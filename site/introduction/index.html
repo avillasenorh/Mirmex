@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Introduction - Mirmex</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Introduction";
+    var mkdocs_page_input_path = "introduction.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Mirmex</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Home</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Introduction</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#download">Download</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-run">How to run</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#data-preparation">Data preparation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#preprocessing">Preprocessing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#correlation-and-stacking">Correlation and stacking</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#output-files">Output files</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#publication">Publication</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../source/">Source files</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../parfiles/">Parameter files</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Mirmex</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Home &raquo;</li>
+        
+      
+    
+    <li>Introduction</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="introduction">Introduction</h1>
+<p>Mirmex is a high‐performance tool for the computation of ambient seismic noise
+correlations on CPU and GPU clusters. This is intended to address emerging
+challenges in noise correlation studies with increasingly large data volumes.
+Mirmex implements a parallelization scheme and strategies to efficiently harness
+modern supercomputing resources, and shows that the use of GPUs can accelerate
+the computation of noise correlations by one order of magnitude or more compared
+with a homogeneous implementation on CPUs. In addition to reducing wall‐clock
+time, Mirmex enables on‐the‐fly computations of large noise correlation datasets,
+thereby eliminating the need for mass storage to archive results.</p>
+<h2 id="download">Download</h2>
+<p>Source code for Mirmex can be downloaded from the ETH Seismology and Wave Physics
+<a href="https://cos.ethz.ch/software/production/mirmex.html">software page</a>.</p>
+<h2 id="how-to-run">How to run</h2>
+<h3 id="data-preparation">Data preparation</h3>
+<p>The bash shell script <code>setup_mirmex_dirs.sh</code> creates the skeleton directory
+structure for an ambient noise correlation project:</p>
+<pre><code>$ setup_mirmex_dirs.sh &lt;path_to_project_dir&gt;
+</code></pre>
+<p>The script generates the following directories:</p>
+<ul>
+<li><code>DATA/raw</code>: continuous data in SAC or miniSEED format</li>
+<li><code>DATA/resp</code>: continuous response files in RESP format</li>
+<li><code>DATA/stationxlm</code>: continuous station metadata in stationXLM format</li>
+<li><code>INPUT</code>: contains station file <code>input_stations.txt</code></li>
+<li><code>INPUT/PROCESSING</code>: contains parameter files in XML format
+  (<code>input_correction.xml</code> and <code>input_parstack.xml</code>)</li>
+</ul>
+<p>The file <code>input_stations.txt</code> contains one line for each station in <code>NET.STA.LOC.</code> format:</p>
+<pre><code>IU.WCI.10.
+II.TLY.00.
+G.KIP.00.
+IU.KMBO.00.
+BK.CMB.00.
+IU.LCO.00.
+IU.KBS.10.
+</code></pre>
+<h3 id="preprocessing">Preprocessing</h3>
+<p>Data preprocessing (decimation, removing mean, trend, and instrument response,
+...) is done using the program <code>par_ic_bat</code> that can be called from the slurm
+job <code>par_ic_bat.sbatch</code>:</p>
+<pre><code class="bash">#!/bin/bash -l
+
+#SBATCH --account=s868
+#SBATCH --nodes=4
+#SBATCH --ntasks=48
+#SBATCH --ntasks-per-node=12
+#SBATCH --ntasks-per-core=1
+#SBATCH --cpus-per-task=1
+#SBATCH --constraint=gpu
+#SBATCH --time=6:00:00
+
+module load daint-gpu
+module load craype-accel-nvidia60
+
+srun ./bin/par_ic_bat ./INPUT/PROCESSING/input_correction.xml
+</code></pre>
+
+<h3 id="correlation-and-stacking">Correlation and stacking</h3>
+<p>Cross correlation and stacking of the pre-processed waveform data is done
+using the program <code>par_st_gpu_bin</code> that can be called from the slurm job
+<code>par_st_bat.sbatch</code>:</p>
+<pre><code class="bash">#!/bin/bash -l
+
+#SBATCH --account=s868
+#SBATCH --nodes=32
+#SBATCH --ntasks=32
+#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-core=1
+#SBATCH --cpus-per-task=1
+#SBATCH --constraint=gpu
+#SBATCH --time=6:00:00
+
+module load daint-gpu
+module load craype-accel-nvidia60
+
+srun --wait=600 ./bin/par_st_gpu_bin ./INPUT/PROCESSING/input_parstack.xml
+</code></pre>
+
+<h3 id="output-files">Output files</h3>
+<ul>
+<li><code>DATA/processed</code>: contains output files from data pre-processing</li>
+<li><code>DATA/processed/out</code>: reports</li>
+<li><code>DATA/processed/&lt;tag&gt;</code>: miniSEED files with continuous data segments</li>
+<li>
+<p><code>DATA/processed/xmlinput</code>: input XLM parameter files used for this <code>&lt;tag&gt;</code></p>
+</li>
+<li>
+<p><code>DATA/correlations</code>: contains output files from cross-correlation and stacking</p>
+</li>
+<li><code>DATA/correlations/out</code>: reports</li>
+<li><code>DATA/correlations/&lt;label&gt;</code>: correlations in SAC format (and phase weights is PWS is used)</li>
+<li><code>DATA/correlations/xmlinput</code>: input XLM parameter files used for this <code>&lt;label&gt;</code></li>
+</ul>
+<h2 id="publication">Publication</h2>
+<p>Fichtner, A., Ermert, L., &amp; Gokhberg, A. (2017). Seismic Noise Correlation on
+Heterogeneous Supercomputers. Seismological Research Letters, 88(4), 1141–1145,
+doi:<a href="http://doi.org/10.1785/0220170043">10.1785/0220170043</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../source/" class="btn btn-neutral float-right" title="Source files">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="../source/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
