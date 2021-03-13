@@ -1,8 +1,8 @@
 site_name: Mirmex
 
 nav:
-    - Home:
-        - Introduction: 'introduction.md'
+    - Home: 'index.md'
+    - Introduction: 'introduction.md'
     - Reference:
         - Source files: 'source.md'
         - Parameter files: 'parfiles.md'
