@@ -58,13 +58,13 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#how-to-run">How to run</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#data-preparation">Data preparation</a>
+    <li class="toctree-l3"><a class="reference internal" href="#1-input-files">1. Input files</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#preprocessing">Preprocessing</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-preprocessing">2. Preprocessing</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#correlation-and-stacking">Correlation and stacking</a>
+    <li class="toctree-l3"><a class="reference internal" href="#3-correlation-and-stacking">3. Correlation and stacking</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#output-files">Output files</a>
+    <li class="toctree-l3"><a class="reference internal" href="#4-output-files">4. Output files</a>
     </li>
         </ul>
     </li>
@@ -126,7 +126,7 @@ thereby eliminating the need for mass storage to archive results.</p>
 <p>Source code for Mirmex can be downloaded from the ETH Seismology and Wave Physics
 <a href="https://cos.ethz.ch/software/production/mirmex.html">software page</a>.</p>
 <h2 id="how-to-run">How to run</h2>
-<h3 id="data-preparation">Data preparation</h3>
+<h3 id="1-input-files">1. Input files</h3>
 <p>The bash shell script <code>setup_mirmex_dirs.sh</code> creates the skeleton directory
 structure for an ambient noise correlation project:</p>
 <pre><code>$ setup_mirmex_dirs.sh &lt;path_to_project_dir&gt;
@@ -149,7 +149,7 @@ BK.CMB.00.
 IU.LCO.00.
 IU.KBS.10.
 </code></pre>
-<h3 id="preprocessing">Preprocessing</h3>
+<h3 id="2-preprocessing">2. Preprocessing</h3>
 <p>Data preprocessing (decimation, removing mean, trend, and instrument response,
 ...) is done using the program <code>par_ic_bat</code> that can be called from the slurm
 job <code>par_ic_bat.sbatch</code>:</p>
@@ -170,7 +170,7 @@ module load craype-accel-nvidia60
 srun ./bin/par_ic_bat ./INPUT/PROCESSING/input_correction.xml
 </code></pre>
 
-<h3 id="correlation-and-stacking">Correlation and stacking</h3>
+<h3 id="3-correlation-and-stacking">3. Correlation and stacking</h3>
 <p>Cross correlation and stacking of the pre-processed waveform data is done
 using the program <code>par_st_gpu_bin</code> that can be called from the slurm job
 <code>par_st_bat.sbatch</code>:</p>
@@ -191,7 +191,7 @@ module load craype-accel-nvidia60
 srun --wait=600 ./bin/par_st_gpu_bin ./INPUT/PROCESSING/input_parstack.xml
 </code></pre>
 
-<h3 id="output-files">Output files</h3>
+<h3 id="4-output-files">4. Output files</h3>
 <ul>
 <li><code>DATA/processed</code>: contains output files from data pre-processing</li>
 <li><code>DATA/processed/out</code>: reports</li>
