@@ -14,7 +14,7 @@ For example for `obs`:
 
 - `obs/bin`: test binaries (except for `ant/bin` that contains the processing codes)
 - `obs/lib`: libraries
-- `obs/prj`: ?
+- `obs/prj`: build files (shell scripts for compiling the different programs)
 - `obs/src`: source code
 
 ## `ant`

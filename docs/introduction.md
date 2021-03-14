@@ -17,7 +17,7 @@ Source code for Mirmex can be downloaded from the ETH Seismology and Wave Physic
 
 ## How to run
 
-### Data preparation
+### 1. Input files
 
 The bash shell script `setup_mirmex_dirs.sh` creates the skeleton directory
 structure for an ambient noise correlation project:
@@ -44,7 +44,7 @@ The file `input_stations.txt` contains one line for each station in `NET.STA.LOC
     IU.KBS.10.
 
 
-### Preprocessing
+### 2. Preprocessing
 
 Data preprocessing (decimation, removing mean, trend, and instrument response,
 ...) is done using the program `par_ic_bat` that can be called from the slurm
@@ -68,7 +68,7 @@ module load craype-accel-nvidia60
 srun ./bin/par_ic_bat ./INPUT/PROCESSING/input_correction.xml
 ```
 
-### Correlation and stacking
+### 3. Correlation and stacking
 
 Cross correlation and stacking of the pre-processed waveform data is done
 using the program `par_st_gpu_bin` that can be called from the slurm job
@@ -92,7 +92,7 @@ module load craype-accel-nvidia60
 srun --wait=600 ./bin/par_st_gpu_bin ./INPUT/PROCESSING/input_parstack.xml
 ```
 
-### Output files
+### 4. Output files
 
 - `DATA/processed`: contains output files from data pre-processing
 - `DATA/processed/out`: reports
